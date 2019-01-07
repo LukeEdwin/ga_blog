@@ -23,133 +23,15 @@
 		</style>
 	</head>
 	<body>
-	<ol>
 		<header><h2 style="color: red;">Begin You Begin</h2></header>
 
-	This tutorial helps you get started with a kit for evaluating Oracle Log Analytics. This kit includes a set of sample log files and it guides you through uploading a set of your own log files. You can then explore Oracle Management Cloud Log Analytics functionality such as detecting anomalies in logs and correlating logs data. The kit also guides you through the installation of a Gateway Agent to help facilitate on-going data uploads.
-
-	Background
-	Oracle Log Analytics monitors, aggregates, indexes, and analyzes all log data from your applications and infrastructure enabling you to correlate this data and find problems faster. Using sample logs data, you can immediately explore the basic functionalities of Oracle Log Analytics. You can then collect logs from your own environment and explore the data in more depth. Sample log files and other scripts are provided in the form of a zip file.
-
-	What Do You Need?
-	An Oracle Cloud account: If you don't already have an Oracle Cloud account, sign up to Oracle Cloud. For more information, see How Do I Access Oracle Management Cloud?
-	An Oracle Management Cloud instance: If you don't already have an Oracle Management Cloud instance, create one. For more information, see Creating an Oracle Management Cloud Instance.
-	Appropriate license: Configure your license edition Oracle Management Cloud – Log Analytics Edition. For more information, see How Do I License Oracle Management Cloud?
-	A Unix host with connectivity to your Oracle Management Cloud instance and with a version of cURL that supports TLS 1.2 protocol
-	For the installation of the Gateway Agent, the following Operating Systems are supported: Oracle Linux 5.x, 6.x, and 7.x (64-bit), Red Hat Enterprise Linux 5.x, 6.x, and 7.x (64-bit), SUSE Linux Enteprise Server 11 (x86_64), AIX 6.1 or later (minimum level 6100-07), AIX 7.1 or later (minimum level 7100-03), Solaris 10.x and 11.x, Microsoft Windows versions 2008 Enterprise R2 (Intel 64-bit, Developer) or later, Microsoft Windows Server 2012 Standard (Intel 64-bit), Microsoft Windows 2012 Standard R2 (Intel 64-bit, Developer) or later.
-	section 1Prepare Your Environment
-	Identify your Oracle Management Cloud instance
-	To meet the pre-requisites, you must have signed up for an Oracle Cloud account and created an Oracle Management Cloud instance.
-
-	Sign in to Oracle Cloud as a user with the OMC Administrator role. Your Oracle Management Cloud instance tile should be displayed on the My Services dashboard.
-
-	On your Management Cloud tile, click the Action Menu action icon then click Open Service Console. You are now viewing the Oracle Management Cloud instances page.
-	On the instance you want to access, click the Manage this instance menu and select OMC URL. The Oracle Management Cloud console home page is displayed.
-	Navigate to Administration > Agents > Download and select the Cloud Agent agent type from drop-down list. Make a note of your UPLOAD_ROOT value for your environment.
-	The Action menu item
-	Description of the illustration agent_download.png
-	Check for TLS 1.2 support
-	Ensure your cURL version supports the TLS 1.2 protocol by running the following command, from a terminal session on your Unix host: 
-	$ curl --help | grep -i tlsv1.2 
-	--tlsv1.2       Use TLSv1.2 (SSL)
-	Note the output of this command confirms that the version of the TLS protocol is TLSv1.2(SSL).
-	Verify your host connectivity to Oracle Management Cloud
-	Your Unix host must have HTTPS access to Oracle Management Cloud. To check this, run the following commands from your Unix host:
-
-	If you are using a proxy server, set a pointer to it. If you are not using a proxy server, skip this step. 
-	$ export HTTPS_PROXY=www-proxy.example.com:80
-	The UPLOAD_ROOT parameter value you noted for your environment represents the URL where the sample logs will be uploaded. Check the connectivity to your specific URL. The format of the command and sample output is shown below:
-	$ curl -I --tlsv1.2  Your UPLOAD_ROOT
-	HTTP/1.0 200 Connection established
-	HTTP/1.1 200 OK
-	Date: Fri, 12 Jan 2018 00:56:42 GMT
-	Server: Oracle-Application-Server-11g X-Frame-Options: SAMEORIGIN
-	Last-Modified: Wed, 07 Dec 2017 23:27:01 GMT 
-	ETag: "2b14-5267f6d5bfb40"
-	Accept-Ranges: bytes
-	Content-Length: 11028
-	Vary: Accept-Encoding
-	Cache-Control: no-cache,no-store
-	The command output indicates that the connection was established.
-	section 2Prepare to Upload Log Data
-	Create a local directory [SCRIPT_HOME].
-	Save the kit file, DBLogTrial.zip, to the [SCRIPT_HOME] directory.
-	Unzip DBLogTrial.zip in the [SCRIPT_HOME] directory.
-	$ unzip DBLogTrial.zip
-	Some of the files part of this set are:
-
-	PDF files with detailed instructions for uploading and evaluating sample data and your own data, as well as instructions for installing a Gateway agent
-	Alertlog.zip (Sample database alert logs)
-	Messages.zip (Sample Linux syslog files)
-	uploadSample.sh (a shell script for uploading the sample logs)
-	uploadMyLog.sh (a shell script for uploading your own logs)
-	The next steps will guide you through these files.
-	section 3Upload Sample Logs and Evaluate
-	You are now ready to upload some sample logs to Log Analytics and explore its functionality.
-
-	Open the instructions file uploadSample.pdf you saved above.
-	Begin with the section Using uploadSample. The exercises that follow will help you view log records, detect anomalies with the Cluster operation and correlate logs based on this sample data.
-	section 4Upload Your Own Logs and Evaluate
-	When all the sample logs exercises are complete, you are ready to upload your own logs to Log Analytics and explore its functionality using your own data.
-
-	Open the instructions file uploadMyLog.pdf you saved above.
-	Begin with the section Installing uploadMyLog. The exercises that follow will help you view log records, detect anomalies with the Cluster operation and correlate logs based on your own data.
-	section 5Install a Gateway Agent
-	The Oracle Management Cloud (OMC) Gateway is an optional yet vital component of an Oracle Management Cloud deployment. It serves as a channel between Oracle Management Cloud agents and Oracle Management Cloud. While it is possible for the OMC agent that resides on each host to communicate directly with OMC’s backend, for security reasons, an organization may want to limit the number of hosts that can connect to the Internet directly. In this case, it is best to set up one or a small number of OMC Gateway hosts, and enable Internet access only for those hosts.
-
-	To complete this step, follow the instructions detailed in the file DeployGateway.pdf you saved above.
-
-	more informationWant to Learn More?
-	To view a Log Analytics product tour, see the Log Analytics Product Tour.
-	For more details on Oracle Log Analytics, see Oracle Log Analytics on Oracle Help Center.
 
 
-    
-    <ul>
-    	<header><h2>Installing APM Agent:</h2></header>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    </ul>
-
-    
-    <ul>
-    	<header><h2>Installing Gateway Agent:</h2></header>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    </ul>
-
-    
-    <ul>
-    	<header><h2>Installing Data Collector:</h2></header>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    </ul>
-    <ul>
-    	<header><h2>Put easy kit data logs stuff here:</h2></header>
-    </ul>
 	</body>
 	<div class="sidebar">
-  <a href="#">Cloud Agent</a>
-  <a href="#">APM Agent</a>
-  <a href="#">Gateway Agent</a>
-  <a href="#">Data Collector</a>
+  
 </div>
 	<footer>
-		Oracle (C) 2018
+		
 	</footer>
 </html>
